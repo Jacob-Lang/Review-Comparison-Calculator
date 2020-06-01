@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Review Comparison Calculator</title>
+    </head>
+    <body>
+        <center>
+
+        <!-- INTRO -->
+        <h1> Review Comparison Calculator </h1>
+        <p>
+            <b>Imagine this:</b> You're getting a takeaway for dinner and have found two different restaurants on SuperTastyMeals.com. <br>
+            Restaurant <span style="color: blue; font-weight: bold;">A</span> has a rating of <b>75%</b> from <b>20</b> reviews. <br>
+            Restaurant <span style="color: red; font-weight: bold;">B</span> has a higher rating of <b>80%</b> but from only <b>5</b> reviews.  <br>
+            So which is better? Should you trust the higher rating even though it has fewer reviews? <br>
+            <br>
+            This Review Comparison Calculator helps you to compare the reviews of any two <i>things</i>... restaurants, books, BnBs, anything! <br>
+            Press "Compare Reviews" to see which of our hypothetical restaurants comes out on top. Then change the numbers and try for yourself!
+         </p>
+         <br>
+
+        <!-- FORM -->
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <span style="color: blue; font-weight: bold;">A</span>
+            <p>
+                {{ form.rating_A.label }}<br>
+                {{ form.rating_A(size=32) }}
+                {% for error in form.rating_A.errors %}
+                <br>
+                <span style="color: red; font-weight: bold;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.num_reviews_A.label }} <br>
+                {{ form.num_reviews_A(size=32) }}
+                {% for error in form.num_reviews_A.errors %}
+                <br>
+                <span style="color: red; font-weight: bold;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <span style="color: red; font-weight: bold;">B</span>
+            <p>
+                {{ form.rating_B.label }}<br>
+                {{ form.rating_B(size=32) }}
+                {% for error in form.rating_B.errors %}
+                <br>
+                <span style="color: red; font-weight: bold;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.num_reviews_B.label }} <br>
+                {{ form.num_reviews_B(size=32) }}
+                {% for error in form.num_reviews_B.errors %}
+                <br>
+                <span style="color: red; font-weight: bold;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <!-- <br> -->
+            <p>{{ form.submit() }}</p>
+        </form>
+
+        <br>
+        <br>
+
+        <!-- RESULTS -->
+        {% if results %}
+        <h2> Results </h2>
+
+        <p>
+            Given the reviews you shoud expect the actual ratings to be: <br>
+            <br>
+            <span style="color: blue; font-weight: bold;">A</span>: {{results[0]}}% <br>
+            <span style="color: red; font-weight: bold;">B</span>: {{results[1]}}% <br>
+        </p>
+
+        {% if results[0] > results[1] %}
+        <p> <span style="color: blue; font-weight: bold;">A</span> is better than <span style="color: red; font-weight: bold;">B</span>! </p>
+        <!-- <p> You can be {{results[2]}}% confident that A is better than B. </p> -->
+        {% elif results[0] < results[1] %}
+        <p> <span style="color: red; font-weight: bold;">B</span> is better than <span style="color: blue; font-weight: bold;">A</span>! </p>
+        <!-- <p> You can be {{100 - results[2]}}% confident that B is better than A. </p> -->
+        {% elif results[0] == results[1] %}
+        <p> <span style="color: blue; font-weight: bold;">A</span> is the same as <span style="color: red; font-weight: bold;">B</span>! </p>
+        {% endif %}
+
+        <h2>For the mathematicians</h2>
+
+        <p>
+            It is possible that the actual ratings for <span style="color: blue; font-weight: bold;">A</span> and <span style="color: red; font-weight: bold;">B</span> are anywhere between 0% and 100%. <br>
+            The probability density (a Beta distribution) for the actual ratings are shown in the plot below. <br>
+            The expected actual rating is calculated as the expectation value of the probability distribution.
+        </p>
+
+        <img src="/plot_prob_densities.png"
+        alt="Probability density png"
+        height="400"
+        >
+
+        <p>
+            The Review Comparison Calculator was inspired by <a href="https://www.youtube.com/watch?v=8idr1WZ1A7Q"> this video </a> and <a href="https://www.johndcook.com/blog/2011/09/27/bayesian-amazon/"> this blog </a>.
+            See these sources for details of the mathematics.
+        </p>
+
+
+
+        {% endif %}
+
+
+        </center>
+    </body>
+</html>
