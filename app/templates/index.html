@@ -84,7 +84,10 @@
         <p> <span style="color: blue; font-weight: bold;">A</span> is the same as <span style="color: red; font-weight: bold;">B</span>! </p>
         {% endif %}
 
-        <h2>For the mathematicians</h2>
+        <br>
+        <br>
+
+        <h2>For the mathematicians:</h2>
 
         <p>
             It is possible that the actual ratings for <span style="color: blue; font-weight: bold;">A</span> and <span style="color: red; font-weight: bold;">B</span> are anywhere between 0% and 100%. <br>
@@ -97,7 +100,7 @@
         height="400"
         >
 
-        <h4>How it works</h4>
+        <h3>How it works</h3>
         <p>
             We make the assumption (for a thing with N reviews and a rating r) that N*r people liked the product and N*(1-r) people disliked it.  <br>
             This allows us to use the binomial distribution to model the probability of seeing these reviews (i.e. {N,r}) for a given actual rating: P(reviews|r_actual). <br>
@@ -106,7 +109,7 @@
             P(r_actual|reviews) = Beta(r_actual; alpha = k + 1, beta = N - k + 1) where k = N*r.
         </p>
         <p>
-            The Review Comparison Calculator was inspired by <a href="https://www.youtube.com/watch?v=8idr1WZ1A7Q"> this video </a> and <a href="https://www.johndcook.com/blog/2011/09/27/bayesian-amazon/"> this blog </a>.
+            The Review Comparison Calculator was inspired by <a href="https://www.youtube.com/watch?v=8idr1WZ1A7Q">this video</a> and <a href="https://www.johndcook.com/blog/2011/09/27/bayesian-amazon/">this blog</a>.
             See these sources a deeper dive into the mathematics.
         </p>
 
