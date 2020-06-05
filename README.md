@@ -1,5 +1,5 @@
-# Review-Comparison-Calculator
- Comparing product reviews with a custom web app
+# Review-Comparison-Calculator  
+Comparing product reviews with a custom web app
 
 The website can be found here: http://reviewcomparisoncalculator.eu.pythonanywhere.com/  
 
